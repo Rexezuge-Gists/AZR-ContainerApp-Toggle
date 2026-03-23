@@ -12,10 +12,10 @@ Write-Output "Logging in to Azure using Managed Identity..."
 Connect-AzAccount -Identity | Out-Null
 
 $day = (Get-Date).Day
-$div = $day / 8
+$div = [math]::Floor($day / 8)
 
 Write-Output "Today day-of-month: $day"
-Write-Output "day / 8 = $div"
+Write-Output "floor(day / 8) = $div"
 
 $app = Get-AzResource `
     -ResourceGroupName $ResourceGroupName `
