@@ -6,7 +6,7 @@ param(
     [string]$ContainerAppName,
 
     [Parameter(Mandatory = $true)]
-    [int]$TargetDiv,
+    [int]$TargetDiv
 )
 
 $ErrorActionPreference = 'Stop'
