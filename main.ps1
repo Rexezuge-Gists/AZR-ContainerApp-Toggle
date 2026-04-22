@@ -6,7 +6,10 @@ param(
     [string]$ContainerAppName,
 
     [Parameter(Mandatory = $true)]
-    [int]$TargetDiv
+    [int]$TargetDiv,
+
+    [Parameter(Mandatory = $true)]
+    [int]$Divisor
 )
 
 $ErrorActionPreference = 'Stop'
@@ -15,10 +18,10 @@ Write-Output "Logging in to Azure using Managed Identity..."
 Connect-AzAccount -Identity | Out-Null
 
 $day = (Get-Date).Day
-$div = [math]::Floor($day / 8)
+$div = [math]::Floor($day / $Divisor)
 
 Write-Output "Today day-of-month: $day"
-Write-Output "floor(day / 8) = $div"
+Write-Output "floor(day / $Divisor) = $div"
 Write-Output "TargetDiv parameter = $TargetDiv"
 
 $app = Get-AzResource `
